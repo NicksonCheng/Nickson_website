@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    restart: always
+  nginx:
+    image: nginx:latest # Specifies the Docker image to use
+    container_name: nginx_proxy
+    ports: # Maps ports between host and container
+      - "80:80" # host_port:container_port"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    restart: always
+# volumes:
+# - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf means:
+# Left side (./nginx/nginx.conf): Path to your local Nginx config file
+# Right side (/etc/nginx/conf.d/default.conf): Path inside the container
+# Mounts your custom nginx.conf file into the container
+# Overrides Nginx's default configuration with your proxy settings

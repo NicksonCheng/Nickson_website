@@ -7,6 +7,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Enable CORS for all domains (or specify specific domains)
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Allow only this domain
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.get("/api/info", async (req: Request, res: Response) => {
   console.log("got request from fontend");
   try {
@@ -27,7 +35,7 @@ app.get("/api/info", async (req: Request, res: Response) => {
   }
 });
 
-const PORT = 5001;
+const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
