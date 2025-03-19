@@ -10,7 +10,10 @@ app.use(express.json());
 // Enable CORS for all domains (or specify specific domains)
 app.use(
   cors({
-    origin: "http://localhost:3000", // Allow only this domain
+    origin: [
+      "http://localhost:3000",
+      "https://nicksonni-lbrp3c9aj-nicksonchengs-projects.vercel.app",
+    ], // Allow only this domain
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
