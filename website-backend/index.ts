@@ -18,6 +18,17 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+app.get("/api", async (req: Request, res: Response) => {
+  try {
+    console.log("API intrigued");
+    res.send(
+      "<html><body><h1>Hello, this is Nickson's website</h1></body></html>"
+    );
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
 app.get("/api/info", async (req: Request, res: Response) => {
   console.log("got request from fontend");
   try {
