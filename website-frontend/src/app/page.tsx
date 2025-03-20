@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from "axios";
+//import axios from "axios";
 
 interface PersonalInfo {
   host: string;
@@ -19,8 +19,15 @@ export default function Home() {
     const fetchData = async () => {
       try {
         // Replace with your backend API URL
-        const response = await axios.get("https://140.116.164.184/api/info");
-        setData(response.data);
+        //const response = await axios.get("https://140.116.164.184/api/info");
+        //setData(response.data);
+        setData({
+          host: "localhost",
+          user: "Nickson",
+          description: "hello nickson",
+          password: "your_password",
+          database: "personal_website",
+        });
       } catch (error) {
         console.error("Error fetching data:", error);
       }
